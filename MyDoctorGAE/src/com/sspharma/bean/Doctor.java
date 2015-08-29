@@ -2,13 +2,20 @@ package com.sspharma.bean;
 
 import java.io.Serializable;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class Doctor implements Serializable {
 
 	private String name;
+	@Id
 	private String email;
+	@Index
 	private String category;
 	private Integer rating;
-
+	private String driveFolderId;
 	public String getName() {
 		return name;
 	}
@@ -40,7 +47,12 @@ public class Doctor implements Serializable {
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
-
+	public String getDriveFolderId() {
+		return driveFolderId;
+	}
+	public void setDriveFolderId(String driveFolderId) {
+		this.driveFolderId = driveFolderId;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
