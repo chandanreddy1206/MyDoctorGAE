@@ -15,7 +15,7 @@
 		<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
 		<init-param>
 			<param-name>services</param-name>
-			<param-value>com.sspharma.api.DoctorApi,com.sspharma.api.UserApi,com.sspharma.api.VoiceMessageApi</param-value>
+			<param-value>com.sspharma.api.AppointmentApi,com.sspharma.api.DoctorApi,com.sspharma.api.UserApi,com.sspharma.api.VoiceMessageApi</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>

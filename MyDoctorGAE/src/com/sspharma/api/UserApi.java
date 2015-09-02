@@ -46,4 +46,9 @@ public class UserApi {
 		Key<User> key = ofy().save().entity(user).now();
 		return ofy().load().key(key).now();
 	}
+	@ApiMethod(name = "users.removeUser")
+	public void removeUser(@Named("id")String id)
+	{
+		ofy().delete().type(User.class).id(id).now();
+	}
 }

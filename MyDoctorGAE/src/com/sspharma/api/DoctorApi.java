@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiClass;
 import com.google.api.server.spi.config.ApiMethod;
@@ -105,5 +104,10 @@ public class DoctorApi {
 			categories.add(doctor.getCategory());
 		}
 		return new CollectionResponse.Builder<String>().setItems(categories).build();
+	}
+	@ApiMethod(name = "doctors.removeDoctor")
+	public void removeDoctor(@Named("id")String id)
+	{
+		ofy().delete().type(Doctor.class).id(id).now();
 	}
 }
