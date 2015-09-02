@@ -38,7 +38,6 @@ public class VoiceMessageApi {
 	 */
 	@ApiMethod(name = "voicemessages.listVoiceMessages")
 	public CollectionResponse<VoiceMessage> listVoiceMessages(@Named("q") @Nullable String q) {
-		System.out.println(q);
 		
 		List<VoiceMessage> voiceMessages = null;
 		if(q == null)
