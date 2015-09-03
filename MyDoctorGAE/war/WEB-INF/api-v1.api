@@ -26,6 +26,84 @@
   "ownerDomain" : "sspharma.com",
   "ownerName" : "sspharma.com",
   "methods" : {
+    "api.appointments.updateAppointment" : {
+      "path" : "appointments",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.AppointmentApi.updateAppointment",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "api.appointments.insertAppointment" : {
+      "path" : "appointments",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.AppointmentApi.insertAppointment",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "api.appointments.listAvailableSlots" : {
+      "path" : "appointments/{doctor}/{date}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.AppointmentApi.listAvailableSlots",
+      "request" : {
+        "parameters" : {
+          "doctor" : {
+            "type" : "string",
+            "required" : true
+          },
+          "date" : {
+            "type" : "datetime",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "api.appointments.removeAppointment" : {
+      "path" : "appointments/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.AppointmentApi.removeAppointment",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
     "api.appointments.listAppointment" : {
       "path" : "appointments",
       "httpMethod" : "GET",
@@ -68,84 +146,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "api.appointments.updateAppointment" : {
-      "path" : "appointments",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.AppointmentApi.updateAppointment",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "api.appointments.removeAppointment" : {
-      "path" : "appointments/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.AppointmentApi.removeAppointment",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "api.appointments.listAvailableSlots" : {
-      "path" : "appointments/{doctor}/{date}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.AppointmentApi.listAvailableSlots",
-      "request" : {
-        "parameters" : {
-          "doctor" : {
-            "type" : "string",
-            "required" : true
-          },
-          "date" : {
-            "type" : "datetime",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "api.appointments.insertAppointment" : {
-      "path" : "appointments",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.AppointmentApi.insertAppointment",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "api.doctors.listDoctors" : {
       "path" : "doctors",
       "httpMethod" : "GET",
@@ -161,6 +161,37 @@
             "required" : false
           }
         },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "api.doctors.updateDoctor" : {
+      "path" : "doctors",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.DoctorApi.updateDoctor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "api.doctors.categories.listCategories" : {
+      "path" : "doctors/categories",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.DoctorApi.getAllCategories",
+      "request" : {
         "body" : "empty"
       },
       "response" : {
@@ -198,37 +229,6 @@
             "required" : true
           }
         },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "api.doctors.updateDoctor" : {
-      "path" : "doctors",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.DoctorApi.updateDoctor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "api.doctors.categories.listCategories" : {
-      "path" : "doctors/categories",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.DoctorApi.getAllCategories",
-      "request" : {
         "body" : "empty"
       },
       "response" : {
@@ -277,22 +277,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "api.users.updateUser" : {
-      "path" : "users",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.UserApi.updateUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "api.users.insertUser" : {
       "path" : "users",
       "httpMethod" : "POST",
@@ -304,21 +288,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "api.users.listUsers" : {
-      "path" : "users",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.UserApi.listUsers",
-      "request" : {
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -345,38 +314,32 @@
         "body" : "empty"
       }
     },
-    "api.voicemessages.getVoiceMessage" : {
-      "path" : "voicemessages/{id}",
-      "httpMethod" : "GET",
+    "api.users.updateUser" : {
+      "path" : "users",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.VoiceMessageApi.getVoiceMessage",
+      "rosyMethod" : "com.sspharma.api.UserApi.updateUser",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "api.voicemessages.insertVoiceMessage" : {
-      "path" : "voicemessages",
-      "httpMethod" : "POST",
+    "api.users.listUsers" : {
+      "path" : "users",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.sspharma.api.VoiceMessageApi.insertVoiceMessage",
+      "rosyMethod" : "com.sspharma.api.UserApi.listUsers",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -402,25 +365,31 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "api.voicemessages.getVoiceMessage" : {
+      "path" : "voicemessages/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.sspharma.api.VoiceMessageApi.getVoiceMessage",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Appointment" : {
-        "id" : "CollectionResponse_Appointment",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Appointment"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Appointment" : {
         "id" : "Appointment",
         "type" : "object",
@@ -437,6 +406,21 @@
           "time" : {
             "type" : "string",
             "format" : "date-time"
+          }
+        }
+      },
+      "CollectionResponse_Appointment" : {
+        "id" : "CollectionResponse_Appointment",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Appointment"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
           }
         }
       },
@@ -533,6 +517,21 @@
           }
         }
       },
+      "CollectionResponse_VoiceMessage" : {
+        "id" : "CollectionResponse_VoiceMessage",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "VoiceMessage"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "VoiceMessage" : {
         "id" : "VoiceMessage",
         "type" : "object",
@@ -561,47 +560,15 @@
         "id" : "VoiceMessageType",
         "type" : "string",
         "enum" : [ "PATIENT_TO_DOCTOR", "DOCTOR_TO_PATIENT" ]
-      },
-      "CollectionResponse_VoiceMessage" : {
-        "id" : "CollectionResponse_VoiceMessage",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "VoiceMessage"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "com.sspharma.api.AppointmentApi.listAppointment" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Appointment"
-        }
-      },
-      "com.sspharma.api.AppointmentApi.getAppointment" : {
-        "response" : {
-          "$ref" : "Appointment"
-        }
-      },
       "com.sspharma.api.AppointmentApi.updateAppointment" : {
         "request" : {
           "$ref" : "Appointment"
         },
         "response" : {
           "$ref" : "Appointment"
-        }
-      },
-      "com.sspharma.api.AppointmentApi.removeAppointment" : {
-      },
-      "com.sspharma.api.AppointmentApi.listAvailableSlots" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Appointment"
         }
       },
       "com.sspharma.api.AppointmentApi.insertAppointment" : {
@@ -612,22 +579,26 @@
           "$ref" : "Appointment"
         }
       },
+      "com.sspharma.api.AppointmentApi.listAvailableSlots" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Appointment"
+        }
+      },
+      "com.sspharma.api.AppointmentApi.removeAppointment" : {
+      },
+      "com.sspharma.api.AppointmentApi.listAppointment" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Appointment"
+        }
+      },
+      "com.sspharma.api.AppointmentApi.getAppointment" : {
+        "response" : {
+          "$ref" : "Appointment"
+        }
+      },
       "com.sspharma.api.DoctorApi.listDoctors" : {
         "response" : {
           "$ref" : "CollectionResponse_Doctor"
-        }
-      },
-      "com.sspharma.api.DoctorApi.insertDoctor" : {
-        "request" : {
-          "$ref" : "Doctor"
-        },
-        "response" : {
-          "$ref" : "Doctor"
-        }
-      },
-      "com.sspharma.api.DoctorApi.getDoctor" : {
-        "response" : {
-          "$ref" : "Doctor"
         }
       },
       "com.sspharma.api.DoctorApi.updateDoctor" : {
@@ -643,17 +614,22 @@
           "$ref" : "CollectionResponse_String"
         }
       },
+      "com.sspharma.api.DoctorApi.insertDoctor" : {
+        "request" : {
+          "$ref" : "Doctor"
+        },
+        "response" : {
+          "$ref" : "Doctor"
+        }
+      },
+      "com.sspharma.api.DoctorApi.getDoctor" : {
+        "response" : {
+          "$ref" : "Doctor"
+        }
+      },
       "com.sspharma.api.DoctorApi.removeDoctor" : {
       },
       "com.sspharma.api.UserApi.getUser" : {
-        "response" : {
-          "$ref" : "User"
-        }
-      },
-      "com.sspharma.api.UserApi.updateUser" : {
-        "request" : {
-          "$ref" : "User"
-        },
         "response" : {
           "$ref" : "User"
         }
@@ -666,29 +642,29 @@
           "$ref" : "User"
         }
       },
+      "com.sspharma.api.UserApi.removeUser" : {
+      },
+      "com.sspharma.api.UserApi.updateUser" : {
+        "request" : {
+          "$ref" : "User"
+        },
+        "response" : {
+          "$ref" : "User"
+        }
+      },
       "com.sspharma.api.UserApi.listUsers" : {
         "response" : {
           "$ref" : "CollectionResponse_User"
         }
       },
-      "com.sspharma.api.UserApi.removeUser" : {
+      "com.sspharma.api.VoiceMessageApi.listVoiceMessages" : {
+        "response" : {
+          "$ref" : "CollectionResponse_VoiceMessage"
+        }
       },
       "com.sspharma.api.VoiceMessageApi.getVoiceMessage" : {
         "response" : {
           "$ref" : "VoiceMessage"
-        }
-      },
-      "com.sspharma.api.VoiceMessageApi.insertVoiceMessage" : {
-        "request" : {
-          "$ref" : "VoiceMessage"
-        },
-        "response" : {
-          "$ref" : "VoiceMessage"
-        }
-      },
-      "com.sspharma.api.VoiceMessageApi.listVoiceMessages" : {
-        "response" : {
-          "$ref" : "CollectionResponse_VoiceMessage"
         }
       }
     }

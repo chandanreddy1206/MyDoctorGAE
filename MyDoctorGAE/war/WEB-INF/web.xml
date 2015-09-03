@@ -26,4 +26,12 @@
 	<listener>
 	    <listener-class>com.sspharma.OfyRegistration</listener-class>
 	</listener>
+	<servlet>
+	    <servlet-name>InsertVoiceMessage</servlet-name>
+	    <servlet-class>com.sspharma.api.InsertVoiceMessage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>InsertVoiceMessage</servlet-name>
+	   <url-pattern>/insertVoiceMessage</url-pattern> 
+	</servlet-mapping>
 </web-app>

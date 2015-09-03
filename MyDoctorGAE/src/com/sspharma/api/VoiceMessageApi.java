@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiClass;
 import com.google.api.server.spi.config.ApiMethod;
@@ -79,16 +81,6 @@ public class VoiceMessageApi {
 			
 		}
 		return new CollectionResponse.Builder<VoiceMessage>().setItems(voiceMessages).build();
-	}
-	@ApiMethod(name = "voicemessages.insertVoiceMessage")
-	public VoiceMessage insertVoiceMessage(VoiceMessage voiceMessage) throws IOException {
-		Doctor doctor = ofy().load().type(Doctor.class).id(voiceMessage.getDoctorEmail()).now();
-		User user = ofy().load().type(User.class).id(voiceMessage.getPatientEmail()).now();
-		String fileTitle = voiceMessage.getTitle() +" "+ dateFormat.format(new Date());
-		String fileId =	DriveUtil.createFile(fileTitle, doctor.getDriveFolderId(),user.getDriveFolderId());
-		voiceMessage.setDriveFileId(fileId);
-		Key<VoiceMessage> key = ofy().save().entity(voiceMessage).now();
-		return ofy().load().key(key).now();
 	}
 
 	@ApiMethod(name = "voicemessages.getVoiceMessage")
