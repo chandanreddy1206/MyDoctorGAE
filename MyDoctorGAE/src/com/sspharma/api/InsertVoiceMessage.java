@@ -32,6 +32,7 @@ import com.googlecode.objectify.Key;
 import com.sspharma.bean.Doctor;
 import com.sspharma.bean.User;
 import com.sspharma.bean.VoiceMessage;
+import com.sspharma.bean.VoiceMessage.VoiceMessageType;
 import com.sspharma.util.DriveUtil;
 
 public class InsertVoiceMessage extends HttpServlet {
@@ -46,8 +47,9 @@ public class InsertVoiceMessage extends HttpServlet {
 		String patientEmail = "";
 		String doctorEmail = "";
 		String title = "";
+		String voiceMsgType = "";
 		byte[] voiceMsgData = null;
-		
+		String contentType ="";
 		
 		
 		try {
@@ -57,6 +59,7 @@ public class InsertVoiceMessage extends HttpServlet {
 				fileItemStream = (FileItemStream) fileItemIterator.next();
 				if (!fileItemStream.isFormField()) {
 					InputStream inputStream = fileItemStream.openStream();
+					contentType = fileItemStream.getContentType();
 					System.out.println("Content type : " + fileItemStream.getContentType());
 					voiceMsgData = IOUtils.toByteArray(inputStream);
 				}
@@ -73,6 +76,11 @@ public class InsertVoiceMessage extends HttpServlet {
 				else if(fileItemStream.getFieldName().equalsIgnoreCase("title"))
 				{
 					title = Streams.asString(fileItemStream
+							.openStream());
+				}
+				else if(fileItemStream.getFieldName().equalsIgnoreCase("voiceMsgType"))
+				{
+					voiceMsgType = Streams.asString(fileItemStream
 							.openStream());
 				}
 			}
@@ -93,11 +101,11 @@ public class InsertVoiceMessage extends HttpServlet {
 			String fileTitle = title + " " + dateFormat.format(new Date());
 			File body = new File();
 			body.setTitle(fileTitle);
-			body.setMimeType(fileItemStream.getContentType());
+			body.setMimeType(contentType);
 			body.setParents(parents);
 			Drive driveService = DriveUtil.createService();
 			File file = driveService.files()
-					.insert(body, new InputStreamContent(fileItemStream.getContentType(),
+					.insert(body, new InputStreamContent(contentType,
 							new ByteArrayInputStream(voiceMsgData)))
 					.execute();
 
@@ -105,6 +113,7 @@ public class InsertVoiceMessage extends HttpServlet {
 			voiceMessage.setDriveFileId(file.getId());
 			voiceMessage.setDoctorEmail(doctorEmail);
 			voiceMessage.setPatientEmail(patientEmail);
+			voiceMessage.setType(VoiceMessageType.valueOf(voiceMsgType));
 			voiceMessage.setTitle(title);
 			Key<VoiceMessage> key = ofy().save().entity(voiceMessage).now();
 			resp.getWriter().print(new Gson().toJson(ofy().load().key(key).now()));

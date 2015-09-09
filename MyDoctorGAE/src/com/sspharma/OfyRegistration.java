@@ -6,6 +6,7 @@ import javax.servlet.ServletContextListener;
 import com.googlecode.objectify.ObjectifyService;
 import com.sspharma.bean.Appointment;
 import com.sspharma.bean.Doctor;
+import com.sspharma.bean.HealthTip;
 import com.sspharma.bean.User;
 import com.sspharma.bean.VoiceMessage;
 
@@ -23,6 +24,7 @@ public class OfyRegistration implements ServletContextListener
 		ObjectifyService.register(Doctor.class);
 		ObjectifyService.register(VoiceMessage.class);
 		ObjectifyService.register(Appointment.class);
+		ObjectifyService.register(HealthTip.class);
 	}
 
 }

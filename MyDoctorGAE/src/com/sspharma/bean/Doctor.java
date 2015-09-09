@@ -16,6 +16,7 @@ public class Doctor implements Serializable {
 	private String category;
 	private Integer rating;
 	private String driveFolderId;
+	private String profilePic;
 	public String getName() {
 		return name;
 	}
@@ -53,6 +54,14 @@ public class Doctor implements Serializable {
 	public void setDriveFolderId(String driveFolderId) {
 		this.driveFolderId = driveFolderId;
 	}
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

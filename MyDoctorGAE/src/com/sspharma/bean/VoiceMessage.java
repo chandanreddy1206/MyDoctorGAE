@@ -9,7 +9,7 @@ import com.googlecode.objectify.annotation.Index;
 @Entity
 public class VoiceMessage implements Serializable
 {
-	private enum VoiceMessageType{
+	public enum VoiceMessageType{
 		PATIENT_TO_DOCTOR,DOCTOR_TO_PATIENT;
 	}
 	private String localFileUlr;

@@ -105,6 +105,12 @@ public class DoctorApi {
 		}
 		return new CollectionResponse.Builder<String>().setItems(categories).build();
 	}
+	@ApiMethod(name = "doctors.experts.listExperts",path="doctors/experts")
+	public CollectionResponse<Doctor> listExperts()
+	{
+		List<Doctor> doctors = ofy().load().type(Doctor.class).filter("category !=", "gp").list();
+		return new CollectionResponse.Builder<Doctor>().setItems(doctors).build();
+	}
 	@ApiMethod(name = "doctors.removeDoctor")
 	public void removeDoctor(@Named("id")String id)
 	{

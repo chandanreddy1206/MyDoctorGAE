@@ -47,8 +47,8 @@ public class UserApi {
 		return ofy().load().key(key).now();
 	}
 	@ApiMethod(name = "users.removeUser")
-	public void removeUser(@Named("id")String id)
+	public void removeUser(@Named("email")String email)
 	{
-		ofy().delete().type(User.class).id(id).now();
+		ofy().delete().type(User.class).id(email).now();
 	}
 }
